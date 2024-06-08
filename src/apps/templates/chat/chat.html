@@ -1,0 +1,157 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Tables {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+  
+  .large-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+  .large-button {
+    width: 250px; /* Adjust the width and height as needed */
+    height: 250px;
+    border-radius: 50%; /* Makes the button circular */
+    background: linear-gradient(310deg, #C0BEDA 0%, #05a8ed 100%); /* Button background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white; /* Icon color */
+  }
+  
+  .small-button {
+    width: 50px; /* Adjust the width and height as needed */
+    height: 50px;
+    border-radius: 50%; /* Makes the button circular */
+    background: linear-gradient(310deg, #141727 0%, #05a8ed 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white; /* Icon color */
+  }
+
+  .small-button,
+.large-button {
+opacity: 1; /* default opacity */
+transition: opacity 0.3s ease; /* smooth transition */
+}
+
+.small-button:hover,
+.large-button:hover {
+opacity: 0.5; /* reduced opacity on hover */
+}
+
+
+@keyframes blink {
+0% {
+opacity: 1;
+}
+50% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+
+/* Apply the blink animation to the desired element */
+.blinking-element {
+animation: blink 1s infinite; /* Adjust the duration (1s) to control blink speed */
+}
+
+/* Optional: Additional styling for the element */
+.blinking-element {
+font-size: 24px; /* Adjust the font size as needed */
+}
+</style>
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="container">
+  <div class="dropdown" id="myDropdown">
+    <select onchange="">
+      <option value="rez" selected>REZ</option>
+      <option value="fallen">FalleN</option>
+    </select>
+    
+  </div>
+  <div style="text-align: center;">
+      <img src="{{ url_for('static', filename='assets/img/rez.png') }}" style="max-width: 400px;" id="pro">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+  
+
+
+<!-- <div class="container">
+  <div class="row d-flex justify-content-start">
+      <div class="col-md-6"> 
+          <div class="card mb-2">
+              <div class="card-body">
+                  <p style="text-align: left; font-weight: bold;">You</p>
+                  <p style="margin-left: 2%;">Hey pro player!</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+<div class="row" style="margin-top:1.5%;opacity: 1;">
+  <div class="col-lg-12">
+    <div class="large-button-container">
+      <p id="recording-status" style="text-align: center; visibility: hidden; margin-bottom: 20px;">Recording in Progress. Click again to end recording.</p>
+      <button class="large-button" id="voiceBtn">
+        <i class="bi bi-mic" style="font-size: 8rem;"></i>
+      </button>
+    </div>
+  </div>
+</div>
+      
+
+      {% include "includes/footer.html" %}
+
+    </div>
+    
+{% endblock content %}
+
+{% block javascripts %}
+
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+
+<script src="{{ url_for('static', filename='assets/js/record.js') }}"></script>
+
+
+
+
+
+{% endblock javascripts %}

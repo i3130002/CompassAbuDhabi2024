@@ -1,0 +1,333 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Billing {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+  
+  .large-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+  .large-button {
+    width: 70px; /* Adjust the width and height as needed */
+    height: 70px;
+    border-radius: 50%; /* Makes the button circular */
+    background: linear-gradient(310deg, #C0BEDA 0%, #05a8ed 100%); /* Button background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white; /* Icon color */
+  }
+  
+  .small-button {
+    width: 10px; /* Adjust the width and height as needed */
+    height: 10px;
+    border-radius: 50%; /* Makes the button circular */
+    background: linear-gradient(310deg, #141727 0%, #3A416F 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white; /* Icon color */
+  }
+
+  .small-button,
+.large-button {
+opacity: 1; /* default opacity */
+transition: opacity 0.3s ease; /* smooth transition */
+}
+
+.small-button:hover,
+.large-button:hover {
+opacity: 0.5; /* reduced opacity on hover */
+}
+
+
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Apply the blink animation to the desired element */
+.blinking-element {
+  animation: blink 2s infinite; /* Adjust the duration (1s) to control blink speed */
+}
+
+/* Optional: Additional styling for the element */
+.blinking-element {
+  font-size: 24px; /* Adjust the font size as needed */
+}
+
+
+</style>
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="container-fluid py-4">
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>Top MENA Teams</h6>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Team</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ranking</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="{{ url_for('static', filename='assets/img/YaLLa.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">YaLLa Esports</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      1.
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="{{ url_for('static', filename='assets/img/NASR.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">NASR eSports</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      2.
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="{{ url_for('static', filename='assets/img/Divine.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Divine Vendetta</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      3.
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="{{ url_for('static', filename='assets/img/e9.webp') }}" class="avatar avatar-sm me-3" alt="user1">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">E9 Esports</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      4.
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card h-100">
+          <div class="card-header pb-0 p-3">
+            <div class="row">
+              <div class="col-6 d-flex align-items-center">
+                <h6 class="mb-0">Upcoming matches</h6>
+              </div>
+              <div class="col-6 text-end">
+                <button class="btn btn-primary btn-sm mb-0">View All</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-3 pb-0">
+            <ul class="list-group">
+              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-1 text-dark font-weight-bold text-sm">June, 09, 2024</h6>
+                  <span class="text-xs">NASR VS YaLLa Esports</span>
+                </div>
+                <div class="d-flex align-items-center text-sm">
+                  8:00 PM
+                  <button class="btn btn-outline-primary mb-0 ms-4" style="font-size: 10px;"> View Details</button>
+                </div>
+              </li>
+              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-1 text-dark font-weight-bold text-sm">June, 09, 2024</h6>
+                  <span class="text-xs">Divine Vendetta VS E9 Esports</span>
+                </div>
+                <div class="d-flex align-items-center text-sm">
+                  10:00 PM
+                  <button class="btn btn-outline-primary mb-0 ms-4" style="font-size: 10px;"> View Details</button>
+                </div>
+              </li>
+              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-1 text-dark font-weight-bold text-sm">June, 10, 2024</h6>
+                  <span class="text-xs">Geekay Esports VS Falcon Esports</span>
+                </div>
+                <div class="d-flex align-items-center text-sm">
+                  8:00 PM
+                  <button class="btn btn-outline-primary mb-0 ms-4" style="font-size: 10px;"> View Details</button>
+                </div>
+              </li>
+              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-1 text-dark font-weight-bold text-sm">June, 10, 2024</h6>
+                  <span class="text-xs">The Ultimates VS Heroic</span>
+                </div>
+                <div class="d-flex align-items-center text-sm">
+                  10:00 PM
+                  <button class="btn btn-outline-primary mb-0 ms-4" style="font-size: 10px;"> View Details</button>
+                </div>
+              </li>
+              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-1 text-dark font-weight-bold text-sm">June, 11, 2024</h6>
+                  <span class="text-xs">TBD VS TBD</span>
+                </div>
+                <div class="d-flex align-items-center text-sm">
+                  8:00 PM
+                  <button class="btn btn-outline-primary mb-0 ms-4" style="font-size: 10px;opacity:0.3" disabled > View Details</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-7 mt-4">
+        <div class="card">
+          <div class="card-header pb-0 px-3">
+            <h6 class="mb-0">Latest MENA News</h6>
+          </div>
+          <div class="card-body pt-4 p-3">
+            <ul class="list-group">
+              <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-3 text-sm">FURIA Top Group B as YaLLa Compass Moves to Playoffs</h6>
+                  <span class="mb-2 text-xs">YaLLa Compass 2024                   <img alt="YaLLa Compass 2024" src="https://img-cdn.hltv.org/eventlogo/XKTIGSBYNd7FRXwyXd8G2l.png?ixlib=java-2.1.0&amp;w=50&amp;s=a3b19406b0a986e2bcc07a8125c501dc" title="YaLLa Compass 2024" style="max-width: 25px;">
+                  </span>
+
+                </div>
+              
+              </li>
+              <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-3 text-sm">Complexity Go 2-0 to 2-3 at YaLLa Compass in Second Consecutive Group Stage Exit</h6>
+                  <span class="mb-2 text-xs">YaLLa Compass 2024                   <img alt="YaLLa Compass 2024" src="https://img-cdn.hltv.org/eventlogo/XKTIGSBYNd7FRXwyXd8G2l.png?ixlib=java-2.1.0&amp;w=50&amp;s=a3b19406b0a986e2bcc07a8125c501dc" title="YaLLa Compass 2024" style="max-width: 25px;">
+                  </span>
+
+                </div>
+                
+              </li>
+              <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-3 text-sm">Eternal Fire Crash Out: "We performed below our capacity when expectations from us increased"</h6>
+                  <span class="mb-2 text-xs">YaLLa Compass 2024                   <img alt="YaLLa Compass 2024" src="https://img-cdn.hltv.org/eventlogo/XKTIGSBYNd7FRXwyXd8G2l.png?ixlib=java-2.1.0&amp;w=50&amp;s=a3b19406b0a986e2bcc07a8125c501dc" title="YaLLa Compass 2024" style="max-width: 25px;">
+                  </span>
+
+                </div>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  <div class="col-md-5 mt-4">
+    <div class="card">
+      <div class="card-header pb-0 px-3">
+        <h6 class="mb-0">Compass A.I</h6>
+      </div>
+      <div style="text-align: center;">
+        <a href="/chat">
+          <img src="{{ url_for('static', filename='assets/img/rez.png') }}" class="avatar-smm" id="pro">
+        </a>
+      </div>
+      
+      <div class="row" style="opacity: 1;">
+        <div class="col-lg-12">
+          <div class="large-button-container">
+            <button class="large-button" id="voiceBtn">
+              <i class="bi bi-mic" style="font-size: 3rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+
+    {% include "includes/footer.html" %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+
+<script src="{{ url_for('static', filename='assets/js/record.js') }}"></script>
+
+
+
+
+{% endblock javascripts %}
